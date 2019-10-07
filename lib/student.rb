@@ -18,7 +18,7 @@ class Student
 
   def self.find_by_name(name)
     sql = "SELECT * FROM students WHERE ? = students.name"
-    new_student = new_from_db(sql)
+    new_student = new_from_db(sql, name)
   end
 
   def save
