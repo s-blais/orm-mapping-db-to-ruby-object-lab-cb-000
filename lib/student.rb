@@ -16,9 +16,9 @@ class Student
     end
   end
 
-  def self.find_by_name(name:)
+  def self.find_by_name(name)
     sql = "SELECT * FROM students WHERE name = ?"
-    DB[:conn].execute(sql, name).map do |row|
+    DB[:conn].execute(sql, name).each do |row|
     self.new_from_db(row)
     end
   end
