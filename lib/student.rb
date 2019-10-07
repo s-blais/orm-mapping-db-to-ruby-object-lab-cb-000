@@ -17,8 +17,10 @@ class Student
   end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM students WHERE ? = students.name"
-    new_student = new_from_db(sql, name)
+    sql = "SELECT * FROM students WHERE name = ?"
+    DB[:conn].execute(sql, name).map do |row|
+    self.new_from_db(row)
+    end
   end
 
   def save
